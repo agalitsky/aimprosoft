@@ -19,6 +19,14 @@ public class MySqlDaoFactory implements DaoFactory{
     private String url = "jdbc:mysql://localhost:3306/aimprosoft";//URL адрес
     private String driver = "com.mysql.jdbc.Driver";//Имя драйвера
 
+    public MySqlDaoFactory() {
+        try {
+            Class.forName(driver);  //Регистрируем драйвер
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(url, user, password);
@@ -26,11 +34,11 @@ public class MySqlDaoFactory implements DaoFactory{
 
     @Override
     public DepartmentDao getDepartmentDao(Connection connection) {
-        return null;
+        return new MySqlDepartmentDao(connection);
     }
 
     @Override
     public EmployeeDao getEmployeeDao(Connection connection) {
-        return null;
+        return new MySqlEmployeeDao(connection);
     }
 }
