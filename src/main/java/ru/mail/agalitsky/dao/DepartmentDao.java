@@ -18,11 +18,11 @@ public interface DepartmentDao {
     /** Возвращает объект соответствующий записи с первичным ключом id или null */
     public Department read(int id);
 
-    /** Сохраняет состояние объекта group в базе данных */
-    public void update(Department group);
+    /** Сохраняет состояние объекта Department в базе данных */
+    public void update(Department department);
 
     /** Удаляет запись об объекте из базы данных */
-    public void delete(Department group);
+    public void delete(Department department);
 
     /** Возвращает список объектов соответствующих всем записям в базе данных */
     public List<Department> getAll() throws SQLException;
