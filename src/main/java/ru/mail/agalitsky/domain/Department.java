@@ -3,12 +3,7 @@ package ru.mail.agalitsky.domain;
 public class Department {
 
     private Integer id;
-	private String name;
-
-    public Department(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+	private String department;
 
     public Integer getId() {
         return id;
@@ -18,11 +13,11 @@ public class Department {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }

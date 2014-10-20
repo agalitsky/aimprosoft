@@ -7,22 +7,11 @@ import java.util.Date;
  */
 public class Employee {
     private Integer id = null;
-    private int number;
     private String name;
     private String surname;
     private Date birthday;
     private String email;
     private Integer departmentId;
-
-    public Employee(Integer id, int number, String name, String surname, Date birthday, String email, Integer departmentId) {
-        this.id = id;
-        this.number = number;
-        this.name = name;
-        this.surname = surname;
-        this.birthday = birthday;
-        this.email = email;
-        this.departmentId = departmentId;
-    }
 
     public Integer getId() {
         return id;
@@ -30,14 +19,6 @@ public class Employee {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
     }
 
     public String getName() {

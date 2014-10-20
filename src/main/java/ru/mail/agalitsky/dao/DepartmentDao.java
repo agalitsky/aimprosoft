@@ -13,10 +13,10 @@ import java.util.List;
 public interface DepartmentDao {
 
     /** Создает новую запись и соответствующий ей объект */
-    public Department create();
+    public Department create() throws SQLException;
 
     /** Возвращает объект соответствующий записи с первичным ключом id или null */
-    public Department read(int id);
+    public Department read(int id) throws SQLException;
 
     /** Сохраняет состояние объекта Department в базе данных */
     public void update(Department department);
