@@ -51,6 +51,7 @@ public class SqlDepartmentDao implements DepartmentDao {
         String sql = "UPDATE aimprosoft.Department SET department = ? WHERE id= ?;";
         PreparedStatement stm = connection.prepareStatement(sql);
         stm.setString(1, department.getDepartment());
+        stm.setInt(2, department.getId());
     }
 
     @Override
