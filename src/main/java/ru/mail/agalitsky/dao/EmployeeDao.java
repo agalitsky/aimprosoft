@@ -12,7 +12,7 @@ import java.util.List;
 public interface EmployeeDao {
 
     /** Создает новую запись и соответствующий ей объект */
-    public Employee create();
+    public Employee create(Employee employee);
 
     /** Возвращает объект соответствующий записи с первичным ключом id или null */
     public Employee read(int id);

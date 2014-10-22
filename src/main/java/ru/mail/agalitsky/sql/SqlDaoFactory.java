@@ -1,4 +1,4 @@
-package ru.mail.agalitsky.mysql;
+package ru.mail.agalitsky.sql;
 
 import ru.mail.agalitsky.dao.DaoFactory;
 import ru.mail.agalitsky.dao.DepartmentDao;
@@ -12,14 +12,14 @@ import java.sql.SQLException;
  * Created by user on 20.10.2014.
  */
 
-public class MySqlDaoFactory implements DaoFactory{
+public class SqlDaoFactory implements DaoFactory{
 
     private String user = "root";//Логин пользователя
     private String password = "";//Пароль пользователя
     private String url = "jdbc:mysql://localhost:3306/aimprosoft";//URL адрес
     private String driver = "com.mysql.jdbc.Driver";//Имя драйвера
 
-    public MySqlDaoFactory() {
+    public SqlDaoFactory() {
         try {
             Class.forName(driver);  //Регистрируем драйвер
         } catch (ClassNotFoundException e) {
@@ -34,11 +34,11 @@ public class MySqlDaoFactory implements DaoFactory{
 
     @Override
     public DepartmentDao getDepartmentDao(Connection connection) {
-        return new MySqlDepartmentDao(connection);
+        return new SqlDepartmentDao(connection);
     }
 
     @Override
     public EmployeeDao getEmployeeDao(Connection connection) {
-        return new MySqlEmployeeDao(connection);
+        return new SqlEmployeeDao(connection);
     }
 }

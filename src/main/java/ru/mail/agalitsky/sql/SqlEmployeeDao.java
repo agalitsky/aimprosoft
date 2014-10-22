@@ -1,4 +1,4 @@
-package ru.mail.agalitsky.mysql;
+package ru.mail.agalitsky.sql;
 
 import ru.mail.agalitsky.dao.EmployeeDao;
 import ru.mail.agalitsky.domain.Employee;
@@ -10,10 +10,10 @@ import java.util.List;
  * Created by user on 20.10.2014.
  */
 
-public class MySqlEmployeeDao implements EmployeeDao {
+public class SqlEmployeeDao implements EmployeeDao {
     private final Connection connection;
 
-    public MySqlEmployeeDao(Connection connection) {
+    public SqlEmployeeDao(Connection connection) {
         this.connection = connection;
     }
 

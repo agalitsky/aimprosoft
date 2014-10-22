@@ -11,7 +11,7 @@ public class Employee {
     private String surname;
     private Date birthday;
     private String email;
-    private Integer departmentId;
+    private int salary;
 
     public Integer getId() {
         return id;
@@ -53,11 +53,11 @@ public class Employee {
         this.email = email;
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public int getSalary() {
+        return salary;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 }
