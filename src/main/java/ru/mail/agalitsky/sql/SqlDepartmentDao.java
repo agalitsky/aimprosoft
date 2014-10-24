@@ -10,10 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by user on 20.10.2014.
- */
-
 public class SqlDepartmentDao implements DepartmentDao {
 
     private final Connection connection;

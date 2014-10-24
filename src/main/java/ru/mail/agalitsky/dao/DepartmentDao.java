@@ -1,9 +1,5 @@
 package ru.mail.agalitsky.dao;
 
-/**
- * Created by user on 20.10.2014.
- */
-
 import ru.mail.agalitsky.domain.Department;
 
 import java.sql.Connection;

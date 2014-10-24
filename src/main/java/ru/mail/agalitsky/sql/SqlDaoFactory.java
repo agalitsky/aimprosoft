@@ -8,10 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Created by user on 20.10.2014.
- */
-
 public class SqlDaoFactory implements DaoFactory{
 
     private String user = "root";//Логин пользователя

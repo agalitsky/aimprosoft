@@ -6,10 +6,6 @@ import ru.mail.agalitsky.domain.Employee;
 import java.sql.Connection;
 import java.util.List;
 
-/**
- * Created by user on 20.10.2014.
- */
-
 public class SqlEmployeeDao implements EmployeeDao {
     private final Connection connection;
 

@@ -1,9 +1,5 @@
 package ru.mail.agalitsky.dao;
 
-/**
- * Created by user on 20.10.2014.
- */
-
 import java.sql.Connection;
 import java.sql.SQLException;
 
