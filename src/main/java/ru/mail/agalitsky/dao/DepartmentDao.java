@@ -14,7 +14,7 @@ import java.util.List;
 public interface DepartmentDao {
 
     /** Создает новую запись и соответствующий ей объект */
-    public void create(Department department) throws SQLException;
+    public Department create(Department department) throws SQLException;
 
     /** Возвращает объект соответствующий записи с первичным ключом id или null */
     public Department read(int id) throws SQLException;

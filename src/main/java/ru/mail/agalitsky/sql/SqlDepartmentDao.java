@@ -23,16 +23,24 @@ public class SqlDepartmentDao implements DepartmentDao {
     }
 
     @Override
-    public void create(Department department) throws SQLException {
-        String sql = "INSERT INTO aimprosoft.Department (department) \n" + "VALUES (?);";
+    public Department create(Department department) throws SQLException {
+        String sql = "INSERT INTO aimprosoft.Departments (department) VALUES (?);";
         PreparedStatement stm = connection.prepareStatement(sql);
 
         stm.setString(1, department.getDepartment());
+        stm.executeUpdate();
+
+        sql = "SELECT id, department FROM aimprosoft.Departments WHERE id = last_insert_id();";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet rs = statement.executeQuery();
+        rs.next();
+        department.setId(rs.getInt("id"));
+        return department;
     }
 
     @Override
     public Department read(int id) throws SQLException{
-        String sql = "SELECT * FROM aimprosoft.Department WHERE id = ?;";
+        String sql = "SELECT * FROM aimprosoft.Departments WHERE id = ?;";
         PreparedStatement stm = connection.prepareStatement(sql);
 
         stm.setInt(1, id);
@@ -48,23 +56,24 @@ public class SqlDepartmentDao implements DepartmentDao {
 
     @Override
     public void update(Department department) throws SQLException {
-        String sql = "UPDATE aimprosoft.Department SET department = ? WHERE id= ?;";
+        String sql = "UPDATE aimprosoft.Departments SET department = ? WHERE id= ?;";
         PreparedStatement stm = connection.prepareStatement(sql);
         stm.setString(1, department.getDepartment());
         stm.setInt(2, department.getId());
+        stm.executeUpdate();
     }
 
     @Override
     public void delete(Department department) throws SQLException {
-        String sql = "DELETE FROM aimprosoft.Department WHERE id= ?;";
+        String sql = "DELETE FROM aimprosoft.Departments WHERE id= ?;";
         PreparedStatement stm = connection.prepareStatement(sql);
         stm.setInt(1, department.getId());
-
+        stm.executeUpdate();
     }
 
     @Override
     public List<Department> getAll() throws SQLException {
-        String sql = "SELECT * FROM aimprosoft.Department;";
+        String sql = "SELECT * FROM aimprosoft.Departments;";
         PreparedStatement stm = connection.prepareStatement(sql);
         ResultSet rs = stm.executeQuery();
         List<Department> list = new ArrayList<Department>();

@@ -18,7 +18,7 @@ public class SqlEmployeeDao implements EmployeeDao {
     }
 
     @Override
-    public Employee create() {
+    public Employee create(Employee employee) {
         return null;
     }
 
