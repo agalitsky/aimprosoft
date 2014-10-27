@@ -35,28 +35,40 @@ public class SqlDepartmentDao implements DepartmentDao {
     }
 
     @Override
-    public Department read(int id) throws SQLException{
+    public Department read(int id) {
         String sql = "SELECT * FROM aimprosoft.Departments WHERE id = ?;";
-        PreparedStatement stm = connection.prepareStatement(sql);
-
-        stm.setInt(1, id);
-
-        ResultSet rs = stm.executeQuery();
-        rs.next();
+        PreparedStatement stm;
         Department d = new Department();
-        d.setId(rs.getInt("id"));
-        d.setDepartment(rs.getString("department"));
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
+
+            ResultSet rs = stm.executeQuery();
+            rs.next();
+
+            d.setId(rs.getInt("id"));
+            d.setDepartment(rs.getString("department"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
 
         return d;
     }
 
     @Override
-    public void update(Department department) throws SQLException {
+    public void update(Department department) {
         String sql = "UPDATE aimprosoft.Departments SET department = ? WHERE id= ?;";
-        PreparedStatement stm = connection.prepareStatement(sql);
-        stm.setString(1, department.getDepartment());
-        stm.setInt(2, department.getId());
-        stm.executeUpdate();
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, department.getDepartment());
+            stm.setInt(2, department.getId());
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

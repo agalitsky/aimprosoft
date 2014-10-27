@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 public class SqlDaoFactory implements DaoFactory{
 
+    private static SqlDaoFactory INSTANCE;
     private String user = "root";//Логин пользователя
     private String password = "";//Пароль пользователя
     private String url = "jdbc:mysql://localhost:3306/aimprosoft";//URL адрес
@@ -36,5 +37,11 @@ public class SqlDaoFactory implements DaoFactory{
     @Override
     public EmployeeDao getEmployeeDao(Connection connection) {
         return new SqlEmployeeDao(connection);
+    }
+
+    public static SqlDaoFactory getInstance() {
+        if (INSTANCE == null)
+            INSTANCE = new SqlDaoFactory();
+        return INSTANCE;
     }
 }
