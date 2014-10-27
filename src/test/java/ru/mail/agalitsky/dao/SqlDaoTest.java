@@ -34,15 +34,14 @@ public class SqlDaoTest extends SqlDaoFactory{
 //        department = dao.read(3);
 //        System.out.println(department.getId() + " " + department.getDepartment());
 
-        // delete department
-//        department.setId(1);
-//        dao.delete(department);
-
         // update department
 //        department.setId(2);
 //        department.setDepartment("Новый департамет");
 //        dao.update(department);
 
+        // delete department
+//        department.setId(1);
+//        dao.delete(department);
 
         list = dao.getAll();
 
