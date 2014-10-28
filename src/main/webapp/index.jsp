@@ -11,24 +11,24 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="department" items="${dao.departments}">
+    <c:forEach var="department" items="${}}">
         <tr>
-            <td>${department.id}</td>
-            <td>${department.name}</td>
-            <td>
-                <button class="btn" type="button"
-                        onclick="window.location.href='updateDepartment.jsp?depId=${department.id}'">Update</button>
-                <button class="btn" type="button"
-                        onclick="jQuery.ajax({url:'department?depId=${department.id}',type: 'DELETE'}).done(function(){location.reload();})">Delete</button>
-                <button class="btn" type="button"
-                        onclick="window.location.href='employees.jsp?depId=${department.id}'">Employees</button>
-            </td>
+            <td>${id}</td>
+            <td>${name}</td>
+            <%--<td>--%>
+                <%--<button class="btn" type="button"--%>
+                        <%--onclick="window.location.href='updateDepartment.jsp?departmentId=${department.id}'">Update</button>--%>
+                <%--<button class="btn" type="button"--%>
+                        <%--onclick="jQuery.ajax({url:'name?departmentId=${department.id}',type: 'DELETE'}).done(function(){location.reload();})">Delete</button>--%>
+                <%--<button class="btn" type="button"--%>
+                        <%--onclick="window.location.href='employees.jsp?departmentId=${department.id}'">Employees</button>--%>
+            <%--</td> --%>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <p>
-    <button class="btn" type="button"
-            onclick="window.location.href='addDepartment.jsp'">Add</button>
+    <%--<button class="btn" type="button"--%>
+            <%--onclick="window.location.href='addDepartment.jsp'">Add</button>--%>
 
 </p>

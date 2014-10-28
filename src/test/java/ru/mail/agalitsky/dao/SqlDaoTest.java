@@ -7,7 +7,6 @@ import ru.mail.agalitsky.domain.Department;
 import ru.mail.agalitsky.sql.SqlDaoFactory;
 
 import java.sql.Connection;
-import java.util.Arrays;
 import java.util.List;
 
 public class SqlDaoTest extends SqlDaoFactory{
@@ -22,17 +21,17 @@ public class SqlDaoTest extends SqlDaoFactory{
         Department department = new Department();
 
         // create department
-//        department.setDepartment("Department #3");
+//        department.setName("Department #3");
 //        department = dao.create(department);
-//        System.out.println(department.getDepartment() + " " + department.getId());
+//        System.out.println(department.getName() + " " + department.getId());
 
         //read department
 //        department = dao.read(3);
-//        System.out.println(department.getId() + " " + department.getDepartment());
+//        System.out.println(department.getId() + " " + department.getName());
 
         // update department
 //        department.setId(2);
-//        department.setDepartment("Новый департамет");
+//        department.setName("Новый департамет");
 //        dao.update(department);
 
         // delete department
@@ -42,7 +41,7 @@ public class SqlDaoTest extends SqlDaoFactory{
         list = dao.getAll();
 
         for (Department d : list) {
-            System.out.println(d.getId() + " " + d.getDepartment());
+            System.out.println(d.getId() + " " + d.getName());
         }
 
 

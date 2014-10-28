@@ -23,7 +23,7 @@ public class SqlDepartmentDao implements DepartmentDao {
         String sql = "INSERT INTO aimprosoft.Departments (department) VALUES (?);";
         PreparedStatement stm = connection.prepareStatement(sql);
 
-        stm.setString(1, department.getDepartment());
+        stm.setString(1, department.getName());
         stm.executeUpdate();
 
         sql = "SELECT id, department FROM aimprosoft.Departments WHERE id = last_insert_id();";
@@ -47,7 +47,7 @@ public class SqlDepartmentDao implements DepartmentDao {
             rs.next();
 
             d.setId(rs.getInt("id"));
-            d.setDepartment(rs.getString("department"));
+            d.setName(rs.getString("department"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -63,7 +63,7 @@ public class SqlDepartmentDao implements DepartmentDao {
         PreparedStatement stm = null;
         try {
             stm = connection.prepareStatement(sql);
-            stm.setString(1, department.getDepartment());
+            stm.setString(1, department.getName());
             stm.setInt(2, department.getId());
             stm.executeUpdate();
         } catch (SQLException e) {
@@ -88,7 +88,7 @@ public class SqlDepartmentDao implements DepartmentDao {
         while (rs.next()) {
             Department d = new Department();
             d.setId(rs.getInt("id"));
-            d.setDepartment(rs.getString("department"));
+            d.setName(rs.getString("department"));
             list.add(d);
         }
         return list;
