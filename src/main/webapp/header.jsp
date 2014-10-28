@@ -5,6 +5,6 @@
 <head>
     <title></title>
     <!-- Optional theme -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 </head>
 <body>
