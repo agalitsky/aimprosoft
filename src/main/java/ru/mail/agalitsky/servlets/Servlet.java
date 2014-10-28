@@ -5,6 +5,7 @@ import ru.mail.agalitsky.dao.DepartmentDao;
 import ru.mail.agalitsky.domain.Department;
 import ru.mail.agalitsky.sql.SqlDaoFactory;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +18,12 @@ import java.util.List;
 
 public class Servlet extends HttpServlet {
 
-    private static DaoFactory daoFactory = SqlDaoFactory.getInstance();
+    private static final long serialVersionUID = 1L;
 
+    private static DaoFactory daoFactory = SqlDaoFactory.getInstance();
     DepartmentDao dao;
-    Department d;
-    Connection con = null;
+
+    Connection con;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,47 +40,18 @@ public class Servlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        req.setAttribute("list", list);
-        req.setAttribute("id", d.getId());
-        req.setAttribute("name", d.getName());
-        super.doGet(req, resp);
+         req.setAttribute("list", list);
+
+//         super.doGet(req, resp);
+//         resp.sendRedirect("index.jsp");
+
+        RequestDispatcher view = req.getRequestDispatcher("index.jsp");
+        view.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Connection con = null;
-        try {
-            con = daoFactory.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        dao = daoFactory.getDepartmentDao(con);
-        String name = req.getParameter("name");
-        d = new Department();
-
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException(
-                    "Department name must be not empty");
-        }
-
-        String departmentId = req.getParameter("id");
-
-        if (departmentId == null) {
-            d.setName(name);
-            try {
-                dao.create(d);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        } else {
-            d.setId(Integer.valueOf(departmentId));
-            try {
-                dao.update(d);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
 
          resp.sendRedirect("index.jsp");
     }
@@ -87,11 +60,6 @@ public class Servlet extends HttpServlet {
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doDelete(req, resp);
 
-        d.setId(Integer.valueOf(req.getParameter("departmentId")));
-        try {
-            dao.delete(d);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 }

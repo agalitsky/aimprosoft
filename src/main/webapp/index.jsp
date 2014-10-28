@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page trimDirectiveWhitespaces="true"%>
-<table class="table table-striped">
+<table class="table">
 
     <thead>
     <tr>
@@ -11,10 +11,10 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="department" items="${}}">
+    <c:forEach var="Department" items="${list}">
         <tr>
-            <td>${id}</td>
-            <td>${name}</td>
+            <td>${Department.id}</td>
+            <td>${Department.name}</td>
             <%--<td>--%>
                 <%--<button class="btn" type="button"--%>
                         <%--onclick="window.location.href='updateDepartment.jsp?departmentId=${department.id}'">Update</button>--%>
