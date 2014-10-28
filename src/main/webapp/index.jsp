@@ -1,15 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page trimDirectiveWhitespaces="true"%>
-<table class="table">
+<div class="container">
+<table class="table table-bordered ">
 
-    <thead>
+
     <tr>
         <th>#</th>
         <th>Department Name</th>
         <th></th>
     </tr>
-    </thead>
     <tbody>
     <c:forEach var="Department" items="${list}">
         <tr>
@@ -32,3 +32,4 @@
             <%--onclick="window.location.href='addDepartment.jsp'">Add</button>--%>
 
 </p>
+</div>
