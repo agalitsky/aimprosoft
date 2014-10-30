@@ -51,9 +51,34 @@ public class Servlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Department name must be not empty");
+        }
+        String departmentId = req.getParameter("id");
+        if (departmentId == null) {
+            Department d = new Department();
+            d.setName(name);
+            try {
+                d = dao.create(d);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
 
-         resp.sendRedirect("index.jsp");
+        } else {
+            Department d = new Department();
+            d.setId(Integer.valueOf(departmentId));
+            d.setName(name);
+            try {
+                dao.update(d);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        doGet(req, resp);
     }
 
     @Override
