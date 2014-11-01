@@ -1,7 +1,7 @@
-package ru.mail.agalitsky.servlets; /**
- * Created by user on 27.10.2014.
- */
+package ru.mail.agalitsky.servlets;
 
+import ru.mail.agalitsky.dao.DaoFactory;
+import ru.mail.agalitsky.dao.DepartmentDao;
 import ru.mail.agalitsky.sql.SqlDaoFactory;
 
 import javax.servlet.ServletContextEvent;
@@ -11,10 +11,14 @@ import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import javax.servlet.http.HttpSessionBindingEvent;
+import java.sql.Connection;
 
 @WebListener()
 public class Listener implements ServletContextListener,
         HttpSessionListener, HttpSessionAttributeListener {
+
+    DepartmentDao dao;
+    Connection con;
 
     // Public constructor is required by servlet spec
     public Listener() {
@@ -28,7 +32,10 @@ public class Listener implements ServletContextListener,
          initialized(when the Web application is deployed). 
          You can initialize servlet context related data here.
       */
-        sce.getServletContext().setAttribute("list", SqlDaoFactory.getInstance());
+        DaoFactory daoFactory = SqlDaoFactory.getInstance();
+        dao = daoFactory.getDepartmentDao(con);
+        sce.getServletContext().setAttribute("dao", dao);
+
     }
 
     public void contextDestroyed(ServletContextEvent sce) {

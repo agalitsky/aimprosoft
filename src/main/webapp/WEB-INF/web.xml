@@ -30,6 +30,7 @@
             <description>header and footer settings</description>
             <url-pattern>/index.jsp</url-pattern>
             <url-pattern>/addDepartment.jsp</url-pattern>
+            <url-pattern>/updateDepartment.jsp</url-pattern>
             <include-prelude>/header.jsp</include-prelude>
             <include-coda>/footer.jsp</include-coda>
         </jsp-property-group>

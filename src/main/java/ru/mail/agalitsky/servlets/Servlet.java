@@ -83,8 +83,14 @@ public class Servlet extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doDelete(req, resp);
-
+        String departmentId = req.getParameter("id");
+        Department d = new Department();
+        d.setId(Integer.valueOf(departmentId));
+        try {
+            dao.delete(d);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }

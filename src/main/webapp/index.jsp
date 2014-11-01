@@ -14,6 +14,12 @@
         <tr>
             <td>${Department.id}</td>
             <td>${Department.name}</td>
+            <td>
+                <button class="btn" type="button"
+                        onclick="window.location.href='updateDepartment.jsp?departmentId=${Department.id}'">Update</button>
+                <button class="btn" type="button"
+                        onclick="delete/${Department.id}">Delete</button>
+            </td>
         </tr>
     </c:forEach>
     </tbody>
