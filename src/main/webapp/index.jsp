@@ -18,12 +18,13 @@
                 <button class="btn" type="button"
                         onclick="window.location.href='updateDepartment.jsp?departmentId=${Department.id}&departmentName=${Department.name}'">Update</button>
                 <button class="btn" type="button"
-                        onclick="$.ajax({type: 'POST', url: '/Servlet', data: {id: '${Department.id}', select: '3'}, success: function(data) {
-                                //
+                        onclick="$.ajax({type: 'POST', url: 'Servlet', data: {id: '${Department.id}', select: '3'}, success: function() {
+                                location.reload();
                                 },
                                 error: function() {
-                                //
+                                alert( 'Error');
                                 }})">Delete</button>
+
             </td>
         </tr>
     </c:forEach>
@@ -32,6 +33,8 @@
 <p>
     <button class="btn" type="button"
             onclick="window.location.href='addDepartment.jsp'">Add</button>
-
+    <script>
+        $.post()
+    </script>
 </p>
 </div>

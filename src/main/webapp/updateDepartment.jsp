@@ -7,7 +7,7 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Save</button>
         <button type="button" class="btn"
-                onclick="window.location.href='index.jsp'">Cancel</button>
+                onclick="window.location.href='Servlet'">Cancel</button>
     </div>
 </form>
 

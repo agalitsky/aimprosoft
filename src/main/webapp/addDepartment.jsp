@@ -7,7 +7,7 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Add</button>
         <button type="button" class="btn"
-                onclick="window.location.href='/Servlet'">Cancel</button>
+                onclick="window.location.href='Servlet'">Cancel</button>
     </div>
 </form>
 
