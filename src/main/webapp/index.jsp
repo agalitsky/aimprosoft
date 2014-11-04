@@ -18,7 +18,7 @@
                 <button class="btn" type="button"
                         onclick="window.location.href='updateDepartment.jsp?departmentId=${Department.id}&departmentName=${Department.name}'">Update</button>
                 <button class="btn" type="button"
-                        onclick="$.ajax({type: 'POST', url: 'Servlet', data: 'id=${Department.id}&select=2', success: function(data) {
+                        onclick="$.ajax({type: 'POST', url: '/Servlet', data: {id: '${Department.id}', select: '3'}, success: function(data) {
                                 //
                                 },
                                 error: function() {
