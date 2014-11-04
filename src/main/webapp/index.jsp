@@ -33,8 +33,5 @@
 <p>
     <button class="btn" type="button"
             onclick="window.location.href='addDepartment.jsp'">Add</button>
-    <script>
-        $.post()
-    </script>
 </p>
 </div>
