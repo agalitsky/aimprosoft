@@ -40,7 +40,7 @@ public class Servlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-         req.setAttribute("list", list);
+        req.setAttribute("list", list);
 
 //         super.doGet(req, resp);
 //         resp.sendRedirect("index.jsp");
@@ -52,45 +52,48 @@ public class Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
+        int select = Integer.parseInt(req.getParameter("select"));
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException(
                     "Department name must be not empty");
         }
         String departmentId = req.getParameter("id");
-        if (departmentId == null) {
-            Department d = new Department();
-            d.setName(name);
-            try {
-                d = dao.create(d);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
 
+        switch (select) {
+            case 1:
+                Department d1 = new Department();
+                d1.setName(name);
+                try {
+                    d1 = dao.create(d1);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 2:
+                Department d2 = new Department();
+                d2.setId(Integer.valueOf(departmentId));
+                d2.setName(name);
+                try {
+                    dao.update(d2);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 3:
+                Department d3 = new Department();
+                d3.setId(Integer.valueOf(departmentId));
+                try {
+                    dao.delete(d3);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                break;
 
-        } else {
-            Department d = new Department();
-            d.setId(Integer.valueOf(departmentId));
-            d.setName(name);
-            try {
-                dao.update(d);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         doGet(req, resp);
     }
 
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String departmentId = req.getParameter("id");
-        Department d = new Department();
-        d.setId(Integer.valueOf(departmentId));
-        try {
-            dao.delete(d);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
 }

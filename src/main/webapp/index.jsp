@@ -16,9 +16,14 @@
             <td>${Department.name}</td>
             <td>
                 <button class="btn" type="button"
-                        onclick="window.location.href='updateDepartment.jsp?departmentId=${Department.id}'">Update</button>
+                        onclick="window.location.href='updateDepartment.jsp?departmentId=${Department.id}&departmentName=${Department.name}'">Update</button>
                 <button class="btn" type="button"
-                        onclick="delete/${Department.id}">Delete</button>
+                        onclick="$.ajax({type: 'POST', url: 'Servlet', data: 'id=${Department.id}&select=2', success: function(data) {
+                                //
+                                },
+                                error: function() {
+                                //
+                                }})">Delete</button>
             </td>
         </tr>
     </c:forEach>
