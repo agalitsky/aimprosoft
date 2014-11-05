@@ -17,13 +17,12 @@
             <td>
                 <button class="btn" type="button"
                         onclick="window.location.href='updateDepartment.jsp?departmentId=${Department.id}&departmentName=${Department.name}'">Update</button>
+                <form style="display:none" action="Servlet" method="post" id="department" name ="delete">
+                    <input type="hidden" value="${Department.id}" name="id">
+                    <input type="hidden" value="3" name="select">
+                </form>
                 <button class="btn" type="button"
-                        onclick="$.ajax({type: 'POST', url: 'Servlet', data: {id: '${Department.id}', select: '3'}, success: function() {
-                                location.reload();
-                                },
-                                error: function() {
-                                alert( 'Error');
-                                }})">Delete</button>
+                        onclick="document.forms['delete'].submit()">Delete</button>
 
             </td>
         </tr>

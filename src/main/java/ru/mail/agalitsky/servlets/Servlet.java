@@ -22,8 +22,9 @@ public class Servlet extends HttpServlet {
 
     private static DaoFactory daoFactory = SqlDaoFactory.getInstance();
     DepartmentDao dao;
-
     Connection con;
+
+    Department d = new Department();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,39 +52,33 @@ public class Servlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
+
         int select = Integer.parseInt(req.getParameter("select"));
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException(
-                    "Department name must be not empty");
-        }
+        String name = req.getParameter("name");
         String departmentId = req.getParameter("id");
 
         switch (select) {
             case 1:
-                Department d1 = new Department();
-                d1.setName(name);
+                d.setName(name);
                 try {
-                    d1 = dao.create(d1);
+                    d = dao.create(d);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 break;
             case 2:
-                Department d2 = new Department();
-                d2.setId(Integer.valueOf(departmentId));
-                d2.setName(name);
+                d.setId(Integer.valueOf(departmentId));
+                d.setName(name);
                 try {
-                    dao.update(d2);
+                    dao.update(d);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 break;
             case 3:
-                Department d3 = new Department();
-                d3.setId(Integer.valueOf(departmentId));
+                d.setId(Integer.valueOf(departmentId));
                 try {
-                    dao.delete(d3);
+                    dao.delete(d);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
